@@ -1,0 +1,6 @@
+
+########## CREAR SEEDER ##################
+php artisan make:seeder UserSeeder
+
+########## Ejecuta (TODOS) los SEEDER ##################
+php artisan db:seed
