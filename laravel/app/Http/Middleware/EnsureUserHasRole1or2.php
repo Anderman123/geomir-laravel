@@ -13,10 +13,10 @@ class EnsureUserHasRole1or2
     *
     * @param  \Illuminate\Http\Request  $request
     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-    * @param  int  $role
+    * @param  int  $roles
     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
     */
-    public function handle(Request $request, Closure $next, ...$role)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
         $user = $request->user();
         // Verifica si el usuario tiene al menos uno de los roles especificados
