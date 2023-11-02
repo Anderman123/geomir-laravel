@@ -43,7 +43,7 @@ Route::get('mail/test', [MailController::class, 'test']);
 // or
 // Route::get('mail/test', 'App\Http\Controllers\MailController@test');
 
-Route::resource('files', FileController::class);
+Route::resource('files', FileController::class)->middleware(['auth', 'cualquier_rol:1,3']);
 
 
 
