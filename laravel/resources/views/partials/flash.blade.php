@@ -1,6 +1,6 @@
 <div id="flash">
 @if ($message = Session::get('success'))
-  @include('partials.partials.flash-message', ['type' => "success", 'message' => $message])
+  @include('partials.flash-message', ['type' => "success", 'message' => $message])
 @endif
 @if ($message = Session::get('error'))
   @include('partials.flash-message', ['type' => "danger", 'message' => $message])
