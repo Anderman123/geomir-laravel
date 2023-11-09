@@ -11,4 +11,3 @@
  <a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a>
  
  
- 

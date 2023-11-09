@@ -14,8 +14,8 @@ class Place extends Model
         'file_id',
         'latitude',
         'longitude',
-        'category_id',
-        'visibility_id',
+        // 'category_id',
+        // 'visibility_id',
         'author_id',
     ];
     public function file()
@@ -26,6 +26,5 @@ class Place extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    
+ 
 }
