@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // Mis importaciones
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\PlaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,6 @@ Route::get('mail/test', [MailController::class, 'test']);
 
 Route::resource('files', FileController::class)->middleware(['auth', 'cualquier_rol:1,3']);
 
-
+Route::resource('places', PlaceController::class);
 
 require __DIR__.'/auth.php';

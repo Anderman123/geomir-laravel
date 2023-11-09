@@ -16,6 +16,8 @@
                     <a href="{{ url('/files') }}">{{ __('Files') }}</a>
                     </br>
                     <a href="{{ url('/files/create') }}">{{ __('Create') }}</a>
+                     </br>
+                    <a href="{{ url('/places') }}">{{ __('Places') }}</a>
                 </div>
             </div>
         </div>
