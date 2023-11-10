@@ -4,3 +4,39 @@ php artisan make:seeder UserSeeder
 
 ########## Ejecuta (TODOS) los SEEDER ##################
 php artisan db:seed
+
+
+
+
+#### GITHUB ####
+git add .
+git commit -m "Codi base del projecte"
+git push origin b0.1
+#### Forzar ####
+git push --set-upstream origin b0.1 
+git tag laravel -m "Projecte Laravel"     (IR VARIANDO laravel)
+#### SUBIR UNA VERSION A LA BRANCA PRINCIPAL MERGE ####
+git push origin b0.1-pep
+git checkout b0.1
+git pull origin b0.1
+git merge b0.1-pep
+git push origin b0.1
+
+
+
+
+#### LARAVEL EN MARCHA ####
+php artisan serve
+npm run dev
+
+
+POR DONDE VOY
+CONTROLADOR PROPIO
+
+########## LISTA DE RUTAS #######################
+php artisan route:list
+
+########## CRUD PROPIO #######################
+php artisan make:migration create_places_table
+php artisan make:model Place
+php artisan make:controller PlaceController --model=Place --resource
