@@ -46,6 +46,6 @@ Route::get('mail/test', [MailController::class, 'test']);
 
 Route::resource('files', FileController::class)->middleware(['auth', 'cualquier_rol:1,3']);
 
-Route::resource('places', PlaceController::class);
+Route::resource('places', PlaceController::class)->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

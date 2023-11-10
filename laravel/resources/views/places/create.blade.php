@@ -34,16 +34,6 @@
                     <label for="plongitude" class="block text-gray-700 text-sm font-bold mb-2">Place Longitude:</label>
                     <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="place_longitude" placeholder="Place Longitude" required>
                 </div>
-                
-                {{-- <div class="mb-4">
-                    <label for="pcatid" class="block text-gray-700 text-sm font-bold mb-2">Place Category ID:</label>
-                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="pcatid" placeholder="Place Category ID" required>
-                </div> --}}
-                
-                {{-- <div class="mb-4">
-                    <label for="pvisid" class="block text-gray-700 text-sm font-bold mb-2">Place Visibility ID:</label>
-                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="pvisid" placeholder="Place Visibility ID" required>
-                </div> --}}
 
                 <div class="mb-6">
                     <label for="pauthor_id" class="block text-gray-700 text-sm font-bold mb-2">Place Author ID:</label>
