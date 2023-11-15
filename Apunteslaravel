@@ -6,13 +6,11 @@ php artisan make:seeder UserSeeder
 php artisan db:seed
 
 
-
-
 #### GITHUB ####
 git add .
 git commit -m "Codi base del projecte"
 git push origin b0.1
-#### Forzar ####
+#### Forzar ####f
 git push --set-upstream origin b0.1 
 git tag laravel -m "Projecte Laravel"     (IR VARIANDO laravel)
 #### SUBIR UNA VERSION A LA BRANCA PRINCIPAL MERGE ####
