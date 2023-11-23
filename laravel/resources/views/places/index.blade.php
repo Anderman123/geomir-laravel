@@ -26,6 +26,7 @@
                                {{-- <td scope="col" class="px-3 py-3">Place category_id</td>
                                <td scope="col" class="px-3 py-3">Place visibility_id</td> --}}
                                <td scope="col" class="px-3 py-3">Place author_id</td>
+                               <td scope="col" class="px-3 py-3">Favoritos</td>
                                <td scope="col" class="px-3 py-3">Place VERRRR</td>
                                <td scope="col" class="px-3 py-3">Place Editar</td>
                                <td scope="col" class="px-3 py-3">Place BORRAR</td>
@@ -36,11 +37,7 @@
                            <tr>
                                 <td class="px-6 py-3">{{ $place->id }}</td>
                                 <td class="px-6 py-3">{{ $place->name }}</td>
-                                @foreach ($files as $file)
-                                    @if ($place->file_id == $file->id)
-                                        <td class="px-1 py-3"><img class="img-fluid" src="{{ asset("storage/{$file->filepath}") }}" /></td>
-                                    @endif
-                                @endforeach
+                                <td class="px-1 py-3"><img class="img-fluid" src="{{ asset("storage/{$place->file->filepath}") }}" /></td>
                                 <td class="px-6 py-3">{{ $place->description }}</td>
                                 <td class="px-6 py-3">{{ $place->file_id }}</td>
                                 <td class="px-6 py-3">{{ $place->latitude }}</td>
@@ -48,6 +45,21 @@
                                 {{-- <td class="px-6 py-3">{{ $place->category_id }}</td>
                                 <td class="px-6 py-3">{{ $place->visibility_id }}</td> --}}
                                 <td class="px-6 py-3">{{ $place->author_id }}</td>
+                                <td class="px-6 py-3">
+                                    {{ $place->favorited_count }} favs 
+                                    @if(auth()->user()->hasPlaceFav($place))
+                                        <form method="post" action="{{ route('places.unfavourite', $place) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" style="border: none;background-color: transparent;"><i class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">Borrar favoritos</i></button>
+                                        </form>  
+                                    @else
+                                        <form method="post" action="{{ route('places.favourite', $place) }}">
+                                            @csrf
+                                            <button type="submit" style="border: none;background-color: transparent;"><i class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">Añadir favoritos</i></button>
+                                        </form>   
+                                    @endif  
+                                </td> 
                                 <td class="px-6 py-3">
                                     <a href="{{ route('places.show', ['place' => $place->id]) }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">Ver</a>
                                 </td>

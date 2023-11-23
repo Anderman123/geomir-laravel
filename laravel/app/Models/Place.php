@@ -20,11 +20,18 @@ class Place extends Model
     ];
     public function file()
     {
-        return $this->hasOne(File::class);
+        return $this->belongsTo(File::class);
     }
     public function user()
     {
         return $this->belongsTo(User::class);
     }
- 
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function favorited()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
 }

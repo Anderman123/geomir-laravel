@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Place;
+use App\Models\Favorite;
 use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PlaceController extends Controller
 {
@@ -13,10 +15,9 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        //
+        $places = Place::withCount('favorited')->get();
         return view("places.index", [
-            "places" => Place::all(),
-            "files" => File::all()
+            "places" => $places,
         ]);
     }
 
@@ -97,14 +98,16 @@ class PlaceController extends Controller
      */
     public function show(Place $place)
     {
-        // return view("places.show", [
-        //     "places" => Place::all(),
-        //     "files" => File::all()
-        // ]);
-        $file=File::find($place->file_id);
+        $place->load('user', 'file', 'favorited'); // Cargar relaciones: usuario, archivo y favoritos
+    
+        $control = $place->favorited->contains(auth()->id()); // Verificar si el usuario autenticado ha marcado este lugar como favorito
+    
         return view("places.show", [
             "place" => $place,
-            "file" => $file,
+            "file" => $place->file,
+            "autor" => $place->user,
+            "control" => $control,
+            "favorites" => $place->favorited_count, // Conteo de favoritos
         ]);
     }
 
@@ -189,6 +192,19 @@ class PlaceController extends Controller
             return redirect()->route('places.show', $place)
             ->with('error', 'ERROR deleting file');
         }
+    }
+    public function favourite(Place $place){
+        $favourite = Favorite::create([
+            'user_id' => auth()->user()->id,
+            'place_id' => $place->id,
+        ]);
+        return redirect()->route('places.show', $place);
+    }
+
+    public function unfavourite(Place $place){
+        Favorite::where('user_id',auth()->user()->id)
+                 ->where('place_id', $place->id )->delete();
+        return redirect()->route('places.show', $place);
     }
 }
 

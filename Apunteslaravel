@@ -28,8 +28,9 @@ php artisan serve
 npm run dev
 
 
-POR DONDE VOY
-CONTROLADOR PROPIO
+POR DONDE VOY #################################333
+Buscar CTRL+F
+controlador i utilitzar loadCount al mètode show.
 
 ########## LISTA DE RUTAS #######################
 php artisan route:list

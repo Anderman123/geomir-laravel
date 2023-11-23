@@ -47,5 +47,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Place::class, 'author_id');
     }
+    public function favorites()
+    {
+        return $this->belongsToMany(Place::class, 'favorites');
+    }
 
+    public function hasPlaceFav(Place $place) : bool
+    {
+        return Favorite::where('user_id', '=', $this->id)
+            ->where('place_id','=', $place->id)
+            ->exists();
+    }
 }
