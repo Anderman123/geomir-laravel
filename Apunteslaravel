@@ -6,6 +6,7 @@ php artisan make:seeder UserSeeder
 php artisan db:seed
 
 
+
 #### GITHUB ####
 git add .
 git commit -m "Codi base del projecte"
