@@ -48,4 +48,7 @@ Route::resource('files', FileController::class)->middleware(['auth', 'cualquier_
 
 Route::resource('places', PlaceController::class)->middleware(['auth', 'verified']);
 
+Route::post('/places/{place}/favourite', [PlaceController::class, 'favourite'])->name('places.favourite');
+Route::delete('/places/{place}/unfavourite', [PlaceController::class, 'unfavourite'])->name('places.unfavourite');
+
 require __DIR__.'/auth.php';

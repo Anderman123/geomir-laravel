@@ -21,6 +21,7 @@
                               <td scope="col" class="px-3 py-3">Filesize</td>
                               <td scope="col" class="px-3 py-3">Created</td>
                               <td scope="col" class="px-3 py-3">Updated</td>
+                              <td scope="col" class="px-3 py-3">Favorito</td>
                               <td scope="col" class="px-3 py-3">Edit</td>
                               <td scope="col" class="px-3 py-3">Boton</td>
                           </tr>
@@ -35,6 +36,20 @@
                             <td class="px-6 py-3">{{ $place->longitude }}</td>
                             <td class="px-6 py-3">{{ $place->created_at }}</td>
                             <td class="px-6 py-3">{{ $place->updated_at }}</td>
+                            <td class="px-6 py-3">
+                                @if(auth()->user()->hasPlaceFav($place))
+                                    <form method="post" action="{{ route('places.unfavourite', $place) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" style="border: none;background-color: transparent;"><i class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">Borrar favoritos</i></button>
+                                    </form>  
+                                @else
+                                    <form method="post" action="{{ route('places.favourite', $place) }}">
+                                        @csrf
+                                        <button type="submit" style="border: none;background-color: transparent;"><i class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">Añadir favoritos</i></button>
+                                    </form>   
+                                @endif  
+                            </td>                       
                             <td class="px-6 py-3"><a href="{{ route('places.edit', ['place' => $place->id]) }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">Editar</a></td>
                             <td class="px-6 py-3">
                                 <form method="POST" action="{{ route('places.destroy', $place) }}">
