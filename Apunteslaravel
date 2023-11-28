@@ -28,9 +28,11 @@ php artisan serve
 npm run dev
 
 
-POR DONDE VOY #################################333
+################################# POR DONDE VOY #################################
 Buscar CTRL+F
-controlador i utilitzar loadCount al mètode show.
+L’opció --view genera les pàgines per visualitzar
+
+
 
 ########## LISTA DE RUTAS #######################
 php artisan route:list
@@ -39,3 +41,78 @@ php artisan route:list
 php artisan make:migration create_places_table
 php artisan make:model Place
 php artisan make:controller PlaceController --model=Place --resource
+
+
+
+##### EXAMEN #####
+php artisan make:migration create_users_table
+php artisan make:model User
+php artisan make:controller UserController --model=User --resource
+
+###############  EXAMEN DE CERO ####################
+##### REFRESCAR CAHCE ##### 
+php artisan config:clear
+##### REFRESCAR MIGRACIONES DROP: ##### 
+php artisan migrate:fresh
+
+
+
+##### CREACION PROYECTO ##### 
+composer create-project laravel/laravel Prueba-Examen
+
+##### REFRESCAR CAHCE ##### 
+php artisan config:clear
+##### instalar dependencia ##### 
+npm install
+###### DESPLEGAR PROYECTO ######
+npm run dev  
+php artisan serve  
+###### INSTALAR DEBUG ######
+composer require barryvdh/laravel-debugbar --dev
+###### GERMINADOR ###### /database/seeders
+php artisan make:seeder UserSeeder
+###### EJECUTAR SEEDER ######
+php artisan db:seed
+
+// IMPORTACIONES para soportar DB en ROLES -> DB
+use Illuminate\Support\Facades\DB;
+  $this->call([
+      UserSeeder::class,
+  ]);
+
+
+###### AUTENTIFICACION BREEZE ######
+composer install (POR SI ACASO)
+composer require laravel/breeze --dev
+php artisan breeze:install blade --dark
+npm install
+npm run dev
+
+RegisteredUserController.php :
+  AÑADIR ESTA LINEA ->DE CODIGO
+
+$user->sendEmailVerificationNotification();
+
+###### Crear migracion ######
+php artisan make:migration create_NOMBRE_table
+
+###### ID PROPIO ######
+$table->id();
+###### COGER EL ID DE OTRA TABLA ######
+$table->unsignedBigInteger('user_id');
+$table->foreign('user_id')->references('id')->on('users');
+###### PARA TEXTO varchar(255)######
+$table->string('nombre',255);
+###### Boleano ######
+$table->boolean('hola')->default(false);
+###### UNICO + 255 caracters ######
+$table->string('hola',255)->unique();
+###### float:Numerico | opcional:nullable######
+$table->float('hola')->nullable();
+
+###### CREAR MODELO SI LA MIGRACION YA EXISTE ######
+php artisan make:model HOLA -m
+
+###### CREAR CONTROLADOR con CRUD asociado a un modelo ######
+php artisan make:controller JobController --model=Jobs --resource
+
