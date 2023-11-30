@@ -20,6 +20,8 @@ git pull origin b0.1
 git merge b0.1-pep
 git push origin b0.1
 
+#### SUBIR UNA VERSION a otra rama de b0.2-alexander a b0.2 ####
+
 
 
 
@@ -30,7 +32,7 @@ npm run dev
 
 ################################# POR DONDE VOY #################################
 Buscar CTRL+F
-L’opció --view genera les pàgines per visualitzar
+Cada membre ha de crear la Policy corresponent (Post o Place), assegu
 
 
 
@@ -56,7 +58,7 @@ php artisan config:clear
 php artisan migrate:fresh
 
 
-
+composer install
 ##### CREACION PROYECTO ##### 
 composer create-project laravel/laravel Prueba-Examen
 
@@ -110,9 +112,44 @@ $table->string('hola',255)->unique();
 ###### float:Numerico | opcional:nullable######
 $table->float('hola')->nullable();
 
-###### CREAR MODELO SI LA MIGRACION YA EXISTE ######
-php artisan make:model HOLA -m
+###### CREAR MODELO ######
+php artisan make:model HOLA
 
 ###### CREAR CONTROLADOR con CRUD asociado a un modelo ######
 php artisan make:controller JobController --model=Jobs --resource
+
+##################################################################
+###### PARA VER INFORMACION DE OTRA TABLA A PARTIR DE ID (ID) ######
+class Jobs extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'title',
+        'requirements',
+        'salary',
+        'company_id', #### QUIERO VER EL NOMBRE DE LA COMPAÑIA
+    ];
+    public function companies() ##### HAY QUE IMPORTAR EL MODELO
+    {
+        return $this->belongsTo(Companies::class);
+    }
+}
+###### JobController.php ######
+###### IMPORTAR LOS DOS MODELOS ######
+use App\Models\Jobs;
+use App\Models\Companies;
+
+###### importarlo con otro nombre ######
+    public function index()
+    {
+        return view("jobs.index", [
+            "jobs" => Jobs::all(),
+            "companies" => Companies::all()
+            
+        ]);
+    }
+
+
+
+
 
