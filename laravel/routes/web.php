@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Models\Place;
 // Mis importaciones
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\FileController;
@@ -48,7 +49,12 @@ Route::resource('files', FileController::class)->middleware(['auth', 'cualquier_
 
 Route::resource('places', PlaceController::class)->middleware(['auth', 'verified']);
 
-Route::post('/places/{place}/favourite', [PlaceController::class, 'favourite'])->name('places.favourite');
-Route::delete('/places/{place}/unfavourite', [PlaceController::class, 'unfavourite'])->name('places.unfavourite');
+
+Route::post('/places/{place}/favourite', [PlaceController::class, 'favourite'])
+    ->name('places.favourite')->middleware('can:favourite,place');
+
+Route::delete('/places/{place}/unfavourite', [PlaceController::class, 'unfavourite'])
+    ->name('places.unfavourite')->middleware('can:unfavourite,place');
+
 
 require __DIR__.'/auth.php';
