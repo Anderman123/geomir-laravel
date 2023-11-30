@@ -13,11 +13,17 @@
                     <!-- HECHO POR MI -->
                     <h2>{{ __('Recursos mios') }}</h2>
                     </br>
-                    <a href="{{ url('/files') }}">{{ __('Files') }}</a>
-                    </br>
+                    @can('viewAny',App\Models\File::class)
+                        <a href="{{ url('/files') }}">{{ __('Files') }}</a>
+                        </br>
+                    @endcan 
+
                     <a href="{{ url('/files/create') }}">{{ __('Create') }}</a>
-                     </br>
-                    <a href="{{ url('/places') }}">{{ __('Places') }}</a>
+
+                    @can('viewAny',App\Models\Place::class)
+                        </br>
+                        <a href="{{ url('/places') }}">{{ __('Places') }}</a>
+                    @endcan 
                 </div>
             </div>
         </div>
