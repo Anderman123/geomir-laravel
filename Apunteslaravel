@@ -23,7 +23,8 @@ git push origin b0.1
 #### SUBIR UNA VERSION a otra rama de b0.2-alexander a b0.2 ####
 git checkout b0.2
 git pull origin b0.2-alexander
-
+git add .
+git push origin b0.2-alexander
 
 #### LARAVEL EN MARCHA ####
 php artisan serve
