@@ -6,7 +6,6 @@ php artisan make:seeder UserSeeder
 php artisan db:seed
 
 
-
 #### GITHUB ####
 git add .
 git commit -m "Codi base del projecte"
@@ -22,8 +21,8 @@ git merge b0.1-pep
 git push origin b0.1
 
 #### SUBIR UNA VERSION a otra rama de b0.2-alexander a b0.2 ####
-
-
+git checkout b0.2
+git pull origin b0.2-alexander
 
 
 #### LARAVEL EN MARCHA ####
