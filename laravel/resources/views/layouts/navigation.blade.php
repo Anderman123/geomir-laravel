@@ -57,6 +57,7 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                <x-language-switcher />
             </div>
 
             <!-- Hamburger -->

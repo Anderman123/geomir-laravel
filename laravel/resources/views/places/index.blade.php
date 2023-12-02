@@ -19,22 +19,22 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                            <tr>
-                               <td scope="col" class="px-3 py-3">Place ID</td>
-                               <td scope="col" class="px-3 py-3">Place name</td>
-                               <td scope="col" class="px-3 py-3">Place img</td>
-                               <td scope="col" class="px-3 py-3">Place description</td>
-                               <td scope="col" class="px-3 py-3">Place File_id</td>
-                               <td scope="col" class="px-3 py-3">Place latitude</td>
-                               <td scope="col" class="px-3 py-3">Place longitude</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Place ID') }}</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Place name') }}</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Place image') }}</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Place description') }}</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Id File Place') }}</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Place latitude') }}</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Place longitude') }}</td>
                                {{-- <td scope="col" class="px-3 py-3">Place category_id</td>
                                <td scope="col" class="px-3 py-3">Place visibility_id</td> --}}
-                               <td scope="col" class="px-3 py-3">Place author_id</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Place author_id') }}</td>
                                 @can('favourite', $places)
-                                    <td scope="col" class="px-3 py-3">Favoritos</td>
+                                    <td scope="col" class="px-3 py-3">{{ __('Favorit') }}</td>
                                 @endcan
-                               <td scope="col" class="px-3 py-3">Place VERRRR</td>
-                               <td scope="col" class="px-3 py-3">Place Editar</td>
-                               <td scope="col" class="px-3 py-3">Place BORRAR</td>
+                               <td scope="col" class="px-3 py-3">{{ __('See Place') }}</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Edit Place') }}</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Delete Place') }}</td>
                            </tr>
                        </thead>
                        <tbody>
@@ -57,23 +57,23 @@
                                             <form method="post" action="{{ route('places.unfavourite', $place) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" style="border: none;background-color: transparent;"><i class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">Borrar favoritos</i></button>
+                                                <button type="submit" style="border: none;background-color: transparent;"><i class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">{{ __('Delete of favorit') }}</i></button>
                                             </form>  
                                         @else
                                             <form method="post" action="{{ route('places.favourite', $place) }}">
                                                 @csrf
-                                                <button type="submit" style="border: none;background-color: transparent;"><i class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">Añadir favoritos</i></button>
+                                                <button type="submit" style="border: none;background-color: transparent;"><i class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">{{ __('Add to favorit') }}</i></button>
                                             </form>   
                                         @endif  
                                     </td> 
                                 @endcan 
                                 @can('view',$place)
                                     <td class="px-6 py-3">
-                                        <a href="{{ route('places.show', ['place' => $place->id]) }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">Ver</a>
+                                        <a href="{{ route('places.show', ['place' => $place->id]) }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">{{ __('See') }}</a>
                                     </td>
                                 @endcan 
                                 @can('update',$place)
-                                    <td class="px-6 py-3"><a href="{{ route('places.edit', ['place' => $place->id]) }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">Editar</a></td>
+                                    <td class="px-6 py-3"><a href="{{ route('places.edit', ['place' => $place->id]) }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">{{ __('Edit') }}</a></td>
                                 @endcan 
                                 
                                 @can('delete',$place)
@@ -81,7 +81,7 @@
                                         <form method="POST" action="{{ route('places.destroy', $place) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">Borrar</button>
+                                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded inline-flex items-center">{{ __('Delete') }}</button>
                                         </form>
                                     </td>
                                 @endcan 

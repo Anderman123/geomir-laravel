@@ -89,12 +89,12 @@ class PlaceController extends Controller
             ]);
             \Log::debug("DB storage OK");
             return redirect()->route('places.show', $place)
-                ->with('success', 'Place successfully saved');
+                ->with('success', __('Place successfully saved'));
         } else {
             \Log::debug("Local storage FAILS");
             // Patró PRG amb missatge d'error
             return redirect()->route("places.create")
-                ->with('error', 'ERROR uploading file');
+                ->with('error', __('ERROR uploading file'));
         }
         
     }
@@ -174,11 +174,11 @@ class PlaceController extends Controller
             $place->save();
 
             return redirect()->route('places.show', $place)
-                ->with('success', 'Place successfully updated');
+                ->with('success', __('Place successfully updated'));
         } else {
             // Manejar el fallo de almacenamiento local
             return redirect()->route("places.edit", $place)
-                ->with('error', 'ERROR uploading file');
+                ->with('error', __('ERROR uploading file'));
         }
     }
 

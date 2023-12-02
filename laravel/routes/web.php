@@ -8,6 +8,7 @@ use App\Models\Place;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,9 @@ Route::post('/places/{place}/favourite', [PlaceController::class, 'favourite'])
 
 Route::delete('/places/{place}/unfavourite', [PlaceController::class, 'unfavourite'])
     ->name('places.unfavourite')->middleware('can:unfavourite,place');
+
+// Ruta para cambiar el idioma
+Route::get('/language/{locale}', [LanguageController::class, 'language'])->name('language');
 
 
 require __DIR__.'/auth.php';
