@@ -24,5 +24,10 @@
     "See": "Ver",
     "Edit": "Editar",
     "ADD Places": "Añadir Places",
-    "You're logged in!": "Has iniciado session!"
+    "You're logged in!": "Has iniciado session!",
+    "Unspecified": "Sin especificar",
+    "public": "Publico",
+    "contacts": "Contacto",
+    "private": "Privado"
+
 }

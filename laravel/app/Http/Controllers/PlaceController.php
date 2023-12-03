@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Place;
 use App\Models\Favorite;
 use App\Models\File;
+use App\Models\Visibility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -33,7 +34,9 @@ class PlaceController extends Controller
     public function create()
     {
         //
-        return view("places.create");
+        // return view("places.create");
+        $visibilities = Visibility::all(); // Obtener todas las visibilidades disponibles
+        return view("places.create", ["visibilities" => $visibilities]);
     }
 
     /**
@@ -85,6 +88,7 @@ class PlaceController extends Controller
                 'longitude' =>$request->input('place_longitude'),
                 // 'category_id' =>$request->input('place_category_id'),
                 // 'visibility_id' =>$request->input('place_visibility_id'),
+                'visibilities_id' => $request->input('visibilities_id'),
                 'author_id' =>auth()->user()->id,
             ]);
             \Log::debug("DB storage OK");
@@ -123,7 +127,9 @@ class PlaceController extends Controller
     public function edit(Place $place)
     {
         //
-        return view("places.edit", ["place" => $place]);
+        // return view("places.edit", ["place" => $place]);
+        $visibilities = Visibility::all(); // Obtener todas las visibilidades disponibles
+        return view("places.edit", ["place" => $place, "visibilities" => $visibilities]);
     }
 
     /**
@@ -171,6 +177,9 @@ class PlaceController extends Controller
             $place->description = $request->input('place_description');
             $place->latitude = $request->input('place_latitude');
             $place->longitude = $request->input('place_longitude');
+            // $place->visibilities_id = $request->input('place_visibilities_id');
+            // $place->visibilities_id = $request->input('place_visibility_id');
+            $place->visibilities_id = $request->input('visibilities_id');
             $place->save();
 
             return redirect()->route('places.show', $place)

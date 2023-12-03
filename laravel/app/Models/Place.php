@@ -17,6 +17,7 @@ class Place extends Model
         // 'category_id',
         // 'visibility_id',
         'author_id',
+        'visibilities_id',
     ];
     public function file()
     {
@@ -34,4 +35,9 @@ class Place extends Model
     {
         return $this->belongsToMany(User::class, 'favorites');
     }
+    public function visibilities()
+    {
+        return $this->belongsTo(Visibility::class);
+    }
+
 }

@@ -25,7 +25,7 @@ git checkout b0.2
 git pull origin b0.2-alexander
 git add .
 git commit -m "Codi base del projecte"
-git push origin b0.2-alexander
+git push origin b0.2
 
 #### LARAVEL EN MARCHA ####
 php artisan serve
@@ -34,7 +34,7 @@ npm run dev
 
 ################################# POR DONDE VOY #################################
 Buscar CTRL+F
-Cada membre ha de crear la Policy corresponent (Post o Place), assegu
+Cada membre ha d’integrar el nou ca 
 
 
 

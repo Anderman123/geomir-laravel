@@ -26,6 +26,14 @@
         <label for="place_longitude">Longitude</label>
         <input type="text" id="place_longitude" name="place_longitude" value="{{ $place->longitude }}">
     </div>
+    
+    <div class="mb-6">
+        <select name="visibilities_id">
+            @foreach($visibilities as $visibility)
+                <option value="{{ $visibility->id }}">{{ $visibility->name }}</option>
+            @endforeach
+        </select>
+    </div>
 
     <div style="display: flex;justify-content: center;">
         <button type="submit" class="btn btn-primary" style="margin:5px;">Edit</button>
