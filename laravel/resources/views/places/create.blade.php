@@ -39,6 +39,13 @@
                     <label for="pauthor_id" class="block text-gray-700 text-sm font-bold mb-2">Place Author ID:</label>
                     <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="place_author_id" value="{{ auth()->user()->id }}" readonly>
                 </div>
+                <div class="mb-6">
+                    <select name="visibilities_id">
+                        @foreach($visibilities as $visibility)
+                            <option value="{{ $visibility->id }}">{{ $visibility->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
                 <div class="flex items-center justify-between">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Create</button>

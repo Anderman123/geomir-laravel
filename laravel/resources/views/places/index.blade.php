@@ -29,6 +29,7 @@
                                {{-- <td scope="col" class="px-3 py-3">Place category_id</td>
                                <td scope="col" class="px-3 py-3">Place visibility_id</td> --}}
                                <td scope="col" class="px-3 py-3">{{ __('Place author_id') }}</td>
+                               <td scope="col" class="px-3 py-3">{{ __('Place Visibility') }}</td>
                                 @can('favourite', $places)
                                     <td scope="col" class="px-3 py-3">{{ __('Favorit') }}</td>
                                 @endcan
@@ -50,6 +51,15 @@
                                 {{-- <td class="px-6 py-3">{{ $place->category_id }}</td>
                                 <td class="px-6 py-3">{{ $place->visibility_id }}</td> --}}
                                 <td class="px-6 py-3">{{ $place->author_id }}</td>
+                                <td class="px-6 py-3">
+                                    @if($place->visibilities)
+                                        {{ __($place->visibilities->name) }}
+                                    @else
+                                        <span class="text-red-500">{{__('Unspecified')}}</span>
+                                    @endif
+                                </td>
+
+
                                 @can('favourite', $place)
                                     <td class="px-6 py-3">
                                         {{ $place->favorited_count }} favs 
