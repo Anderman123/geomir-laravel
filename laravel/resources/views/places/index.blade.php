@@ -48,9 +48,7 @@
                                 <td class="px-6 py-3">{{ $place->file_id }}</td>
                                 <td class="px-6 py-3">{{ $place->latitude }}</td>
                                 <td class="px-6 py-3">{{ $place->longitude }}</td>
-                                {{-- <td class="px-6 py-3">{{ $place->category_id }}</td>
-                                <td class="px-6 py-3">{{ $place->visibility_id }}</td> --}}
-                                <td class="px-6 py-3">{{ $place->author_id }}</td>
+                                <td class="px-6 py-3">{{ $place->author->name }}</td>
                                 <td class="px-6 py-3">
                                     @if($place->visibilities)
                                         {{ __($place->visibilities->name) }}

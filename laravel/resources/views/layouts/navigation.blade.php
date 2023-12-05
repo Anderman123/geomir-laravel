@@ -22,6 +22,10 @@
                     <x-nav-link href="/files" :active="request()->routeIs('files')">
                         {{ __('files') }}
                     </x-nav-link>
+
+                    <x-nav-link href="/admin/login" :active="request()->routeIs('admin')">
+                        {{ __('admin') }}
+                    </x-nav-link>
                 </div>
             </div>
 
