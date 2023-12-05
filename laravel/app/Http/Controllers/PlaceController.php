@@ -6,6 +6,7 @@ use App\Models\Place;
 use App\Models\Favorite;
 use App\Models\File;
 use App\Models\Visibility;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,6 +24,7 @@ class PlaceController extends Controller
     public function index()
     {
         $places = Place::withCount('favorited')->get();
+        // dd(auth()->user());
         return view("places.index", [
             "places" => $places,
         ]);
